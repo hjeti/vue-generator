@@ -6,7 +6,7 @@ const open = require('open');
 const path = require('path');
 
 program
-	.parse(process.argv);
+  .parse(process.argv);
 
 
 open(path.join(__dirname, '../template'));

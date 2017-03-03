@@ -8,54 +8,54 @@ const fs = require('fs');
 const path = require('path');
 
 module.exports = function generateDirect(type, destinationSettingsKey) {
-    let componentName = null;
+  let componentName = null;
 
-    program
-        .usage('<name>')
-        .arguments('<name>')
-        .action((name) => {
-            componentName = name;
-        })
-        .option('-d, --destination <destination>', 'Destination')
-        .option('-p, --template-path <template-path>', 'Path to the directory containing the templates')
-        .option('-t, --template <template>', 'Override template type')
-        .option('-f, --force', 'Force generation')
-        .parse(process.argv);
+  program
+    .usage('<name>')
+    .arguments('<name>')
+    .action((name) => {
+      componentName = name;
+    })
+    .option('-d, --destination <destination>', 'Destination')
+    .option('-p, --template-path <template-path>', 'Path to the directory containing the templates')
+    .option('-t, --template <template>', 'Override template type')
+    .option('-f, --force', 'Force generation')
+    .parse(process.argv);
 
 
-    if (!componentName) {
-        console.error(chalk.red('no name given'));
-        process.exit(1);
-    }
+  if (!componentName) {
+    console.error(chalk.red('no name given'));
+    process.exit(1);
+  }
 
-    let settingsOverrides = {};
+  let settingsOverrides = {};
 
-    if (program.destination) {
-        settingsOverrides[destinationSettingsKey] = program.destination;
-    }
+  if (program.destination) {
+    settingsOverrides[destinationSettingsKey] = program.destination;
+  }
 
-    if (program.templatePath) {
-        settingsOverrides['templatePath'] = program.templatePath;
-    }
+  if (program.templatePath) {
+    settingsOverrides['templatePath'] = program.templatePath;
+  }
 
-    if (program.template) {
-        type = program.template;
-    }
+  if (program.template) {
+    type = program.template;
+  }
 
-    const settings = Settings.getSettings(settingsOverrides);
-    const destination = settings[destinationSettingsKey];
+  const settings = Settings.getSettings(settingsOverrides);
+  const destination = settings[destinationSettingsKey];
 
-    if (!fs.existsSync(destination) && !program.force) {
-        console.error(chalk.red(`Destination path (${path.resolve(destination)}) doesn't exist. Use '-force' or '-f' to generate missing folders.`));
-        process.exit(1);
-    }
+  if (!fs.existsSync(destination) && !program.force) {
+    console.error(chalk.red(`Destination path (${path.resolve(destination)}) doesn't exist. Use '-force' or '-f' to generate missing folders.`));
+    process.exit(1);
+  }
 
-    const options = {
-        name: componentName,
-        destination: destination
-    };
+  const options = {
+    name: componentName,
+    destination: destination
+  };
 
-    generate(type, options, settings);
+  generate(type, options, settings);
 };
 
 

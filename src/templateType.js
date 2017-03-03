@@ -1,5 +1,5 @@
 module.exports = {
-	PAGE: 'page',
-	STORE: 'store',
-	COMPONENT: 'component'
+  PAGE: 'page',
+  STORE: 'store',
+  COMPONENT: 'component'
 };

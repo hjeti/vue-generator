@@ -9,25 +9,22 @@ let wizardType;
 let componentName = null;
 
 program
-	.usage('[type] [name]')
-	.arguments('[type] [name]')
-	.action((type, name) =>
-	{
-		wizardType = type;
-		componentName = name;
-	})
-	.parse(process.argv);
+  .usage('[type] [name]')
+  .arguments('[type] [name]')
+  .action((type, name) => {
+    wizardType = type;
+    componentName = name;
+  })
+  .parse(process.argv);
 
 const types = Object.keys(WizardType).map((key) => WizardType[key]);
 
-if(wizardType && !types.includes(wizardType))
-{
-	console.error(chalk.red('type doesn\'t exist'));
-	process.exit(1);
+if (wizardType && !types.includes(wizardType)) {
+  console.error(chalk.red('type doesn\'t exist'));
+  process.exit(1);
 }
-else if(!wizardType)
-{
-	wizardType = WizardType.WIZARD;
+else if (!wizardType) {
+  wizardType = WizardType.WIZARD;
 }
 
 wizard(wizardType, componentName);

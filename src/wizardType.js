@@ -1,6 +1,6 @@
 module.exports = {
-	WIZARD: 'wizard',
-	COMPONENT: 'component',
-	STORE: 'store',
-	PAGE: 'page'
+  WIZARD: 'wizard',
+  COMPONENT: 'component',
+  STORE: 'store',
+  PAGE: 'page'
 };

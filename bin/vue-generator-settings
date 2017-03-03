@@ -5,40 +5,35 @@ const chalk = require('chalk');
 const Settings = require('../src/settings');
 
 program
-	.option('-p, --page-destination <destination>', 'Set page default destination')
-	.option('-s, --store-destination <destination>', 'Set store default destination')
-	.option('-c, --component-destination <destination>', 'Set component default destination')
-	.option('-t, --template-path <destination>', 'Set default template directory')
-	.option('-l, --log', 'Log settings')
-	.parse(process.argv);
+  .option('-p, --page-destination <destination>', 'Set page default destination')
+  .option('-s, --store-destination <destination>', 'Set store default destination')
+  .option('-c, --component-destination <destination>', 'Set component default destination')
+  .option('-t, --template-path <destination>', 'Set default template directory')
+  .option('-l, --log', 'Log settings')
+  .parse(process.argv);
 
-if(program.log)
-{
-	console.log(chalk.green('Settings:'));
-	console.log(Settings.getSettings());
-	process.exit(1);
+if (program.log) {
+  console.log(chalk.green('Settings:'));
+  console.log(Settings.getSettings());
+  process.exit(1);
 }
 
 const settings = {};
 
-if(program.pageDestination)
-{
-	settings['pageDestination'] = program.pageDestination;
+if (program.pageDestination) {
+  settings['pageDestination'] = program.pageDestination;
 }
 
-if(program.storeDestination)
-{
-	settings['storeDestination'] = program.storeDestination;
+if (program.storeDestination) {
+  settings['storeDestination'] = program.storeDestination;
 }
 
-if(program.componentDestination)
-{
-	settings['componentDestination'] = program.componentDestination;
+if (program.componentDestination) {
+  settings['componentDestination'] = program.componentDestination;
 }
 
-if(program.templatePath)
-{
-	settings['templatePath'] = program.templatePath;
+if (program.templatePath) {
+  settings['templatePath'] = program.templatePath;
 }
 
 Settings.setSettings(settings);
