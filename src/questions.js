@@ -3,30 +3,32 @@ const wizardType = require('./wizardType');
 const path = require('path');
 const fs = require('fs');
 
-module.exports = function questions(type, settings)
+module.exports = function questions(type, settings, name)
 {
 	let questions;
+
+  console.log('*', name);
 
 	switch(type)
 	{
 		case wizardType.WIZARD:
 		{
-			questions = [askType(), askName(settings.defaultName), askDestination(templateType.PAGE, settings.pageDestination, true), askDestination(templateType.STORE, settings.storeDestination, true), askDestination(templateType.COMPONENT, settings.componentDestination, true)];
+			questions = [askType(), askName(name), askDestination(templateType.PAGE, settings.pageDestination, true), askDestination(templateType.STORE, settings.storeDestination, true), askDestination(templateType.COMPONENT, settings.componentDestination, true)];
 			break;
 		}
 		case wizardType.STORE:
 		{
-			questions = [askName(settings.defaultName), askDestination(templateType.STORE, settings.storeDestination)];
+			questions = [askName(name), askDestination(templateType.STORE, settings.storeDestination)];
 			break;
 		}
 		case wizardType.COMPONENT:
 		{
-			questions = [askName(settings.defaultName), askDestination(templateType.COMPONENT, settings.componentDestination)];
+			questions = [askName(name), askDestination(templateType.COMPONENT, settings.componentDestination)];
 			break;
 		}
 		case wizardType.PAGE:
 		{
-			questions = [askName(settings.defaultName), askDestination(templateType.PAGE, settings.pageDestination)];
+			questions = [askName(name), askDestination(templateType.PAGE, settings.pageDestination)];
 			break;
 		}
 	}
@@ -46,6 +48,8 @@ function askType()
 
 function askName(defaultName)
 {
+  console.log('askName', defaultName);
+
 	return {
 		type: 'input',
 		name: 'name',
