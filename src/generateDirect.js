@@ -16,9 +16,10 @@ module.exports = function generateDirect(type, destinationSettingsKey) {
         .action((name) => {
             componentName = name;
         })
-        .option('-f, --force', 'Force generation')
         .option('-d, --destination <destination>', 'Destination')
-        .option('-t, --template-path <template-path>', 'Path to the templates')
+        .option('-p, --template-path <template-path>', 'Path to the directory containing the templates')
+        .option('-t, --template <template>', 'Override template type')
+        .option('-f, --force', 'Force generation')
         .parse(process.argv);
 
 
@@ -37,6 +38,10 @@ module.exports = function generateDirect(type, destinationSettingsKey) {
         settingsOverrides['templatePath'] = program.templatePath;
     }
 
+    if (program.template) {
+        type = program.template;
+    }
+
     const settings = Settings.getSettings(settingsOverrides);
     const destination = settings[destinationSettingsKey];
 
@@ -51,7 +56,7 @@ module.exports = function generateDirect(type, destinationSettingsKey) {
     };
 
     generate(type, options, settings);
-}
+};
 
 
 
