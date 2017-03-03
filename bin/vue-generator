@@ -1,0 +1,15 @@
+#!/usr/bin/env node
+
+const program = require('commander');
+
+program
+	.version(require('../package').version)
+	.usage('<command> [options]')
+	.command('wizard', 'start generator wizard', {isDefault: true})
+	.command('component', 'create component')
+	.command('store', 'create store module')
+	.command('page', 'create page')
+	.command('reset', 'reset settings')
+	.command('settings', 'set or display settings')
+	.command('template', 'open default template directory to edit default templates')
+	.parse(process.argv);

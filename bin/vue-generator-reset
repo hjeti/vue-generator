@@ -1,0 +1,13 @@
+#!/usr/bin/env node
+
+const program = require('commander');
+const chalk = require('chalk');
+const Settings = require('../src/settings');
+
+program
+	.parse(process.argv);
+
+Settings.resetSettings();
+
+console.log(chalk.green('settings reset to defaults'));
+console.log(Settings.getSettings());
