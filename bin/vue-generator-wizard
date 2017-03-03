@@ -20,7 +20,7 @@ program
 const types = Object.keys(WizardType).map((key) => WizardType[key]);
 
 if (wizardType && !types.includes(wizardType)) {
-  console.error(chalk.red('type doesn\'t exist'));
+  console.error(chalk.red('Type doesn\'t exist'));
   process.exit(1);
 }
 else if (!wizardType) {

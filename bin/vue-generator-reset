@@ -9,5 +9,5 @@ program
 
 Settings.resetSettings();
 
-console.log(chalk.green('settings reset to defaults'));
+console.log(chalk.green('Settings are reset to defaults'));
 console.log(Settings.getSettings());
