@@ -12,6 +12,7 @@
     "vue-generator-settings": "bin/vue-generator-settings",
     "vue-generator-store": "bin/vue-generator-store",
     "vue-generator-template": "bin/vue-generator-template",
+    "vue-generator-init": "bin/vue-generator-init",
     "vg": "bin/vue-generator",
     "vg-wizard": "bin/vue-generator-wizard",
     "vg-component": "bin/vue-generator-component",
@@ -19,7 +20,8 @@
     "vg-reset": "bin/vue-generator-reset",
     "vg-settings": "bin/vue-generator-settings",
     "vg-store": "bin/vue-generator-store",
-    "vg-template": "bin/vue-generator-template"
+    "vg-template": "bin/vue-generator-template",
+    "vg-init": "bin/vue-generator-init"
   },
   "author": "Hendrik-Jan de Harder",
   "license": "MIT",
