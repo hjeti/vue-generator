@@ -1,4 +1,9 @@
-const userSettings = require('user-settings').file('.vuegenerator');
+const settingsFile = '.vuegenerator';
+
+const userSettings = require('user-settings').file(settingsFile);
+const fs = require('fs');
+const path = require('path');
+const chalk = require('chalk');
 
 const defaultSettings = {
   pageDestination: './src/page/',
@@ -8,7 +13,7 @@ const defaultSettings = {
 };
 
 exports.getSettings = function (overrides = {}) {
-  return Object.assign({}, defaultSettings, getUserSettings(), overrides);
+  return Object.assign({}, defaultSettings, getUserSettings(), getLocalSettings(), overrides);
 };
 
 exports.resetSettings = function () {
@@ -31,10 +36,29 @@ function getUserSettings() {
   }, {});
 }
 
-function getLocalSettings() {
-
+function hasLocalSettings() {
+  return fs.existsSync(path.resolve(settingsFile));
 }
 
-function saveSettingsLocal(overrides) {
+function getLocalSettings() {
+  if (hasLocalSettings()) {
+    const fileContent = fs.readFileSync(path.resolve(settingsFile), {encoding: 'utf-8'});
+
+    let settings;
+
+    try {
+      settings = JSON.parse(fileContent);
+    } catch (e) {
+      console.error(chalk.red(`Error parsing ${settingsFile} file.`));
+      process.exit(1);
+    }
+
+    return settings;
+  }
+
+  return {};
+}
+
+function saveLocalSettings(overrides) {
 
 }
