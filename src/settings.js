@@ -13,37 +13,27 @@ const defaultSettings = {
 };
 
 exports.getSettings = function (overrides = {}) {
-  return Object.assign({}, defaultSettings, getUserSettings(), getLocalSettings(), overrides);
+  return Object.assign({}, defaultSettings, this.getUserSettings(), this.getLocalSettings(), overrides);
 };
 
 exports.resetSettings = function () {
   Object.keys(defaultSettings).forEach(key => userSettings.unset(key));
 };
 
-exports.setSettings = function (settings) {
+exports.setGlobalSettings = function (settings) {
   Object.keys(settings).forEach(key => userSettings.set(key, settings[key]));
-
-  saveLocalSettings(settings);
 };
 
-function getUserSettings() {
-  return Object.keys(defaultSettings).reduce((settings, key) => {
-    const setting = userSettings.get(key);
+exports.setLocalSettings = function (settings) {
+  fs.writeFileSync(path.resolve(settingsFile), JSON.stringify(settings, null, 2));
+};
 
-    if (setting) {
-      settings[key] = setting;
-    }
-
-    return settings;
-  }, {});
-}
-
-function hasLocalSettings() {
+exports.hasLocalSettings = function (settings) {
   return fs.existsSync(path.resolve(settingsFile));
-}
+};
 
-function getLocalSettings() {
-  if (hasLocalSettings()) {
+exports.getLocalSettings = function (settings) {
+  if (this.hasLocalSettings()) {
     const fileContent = fs.readFileSync(path.resolve(settingsFile), {encoding: 'utf-8'});
 
     let settings;
@@ -59,8 +49,23 @@ function getLocalSettings() {
   }
 
   return {};
-}
+};
 
-function saveLocalSettings(settings) {
-  fs.writeFileSync(path.resolve(settingsFile), JSON.stringify(settings, null, 2));
-}
+exports.getUserSettings = function () {
+  return Object.keys(defaultSettings).reduce((settings, key) => {
+    const setting = userSettings.get(key);
+
+    if (setting) {
+      settings[key] = setting;
+    }
+
+    return settings;
+  }, {});
+};
+
+exports.logSettings = function (settings) {
+  return Object.keys(settings).forEach((key) => {
+    console.log()
+  });
+};
+

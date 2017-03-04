@@ -2,8 +2,9 @@ const templateType = require('./templateType');
 const wizardType = require('./wizardType');
 const path = require('path');
 const fs = require('fs');
+const toSpaceCase = require('to-space-case');
 
-module.exports = function questions(type, settings, name) {
+exports.getGeneratorQuestions = function (type, settings, name) {
   let questions;
 
   switch (type) {
@@ -27,6 +28,19 @@ module.exports = function questions(type, settings, name) {
 
   return questions;
 };
+
+exports.getSettingQuestions = function (settings) {
+  return Object.keys(settings).map(key => askSetting(key, settings[key]));
+};
+
+function askSetting(key, defaultValue) {
+  return {
+    type: 'input',
+    name: key,
+    message: toSpaceCase(key),
+    default: defaultValue || ''
+  }
+}
 
 function askType() {
   return {

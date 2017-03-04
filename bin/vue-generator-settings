@@ -36,7 +36,7 @@ if (program.templatePath) {
   settings['templatePath'] = program.templatePath;
 }
 
-Settings.setSettings(settings);
+Settings.setGlobalSettings(settings);
 
 console.log(chalk.green('Settings updated:'));
 console.log(Settings.getSettings());
