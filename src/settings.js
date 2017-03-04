@@ -66,7 +66,7 @@ exports.getUserSettings = function () {
 };
 
 exports.logSettings = function (settings) {
-  return Object.keys(settings).forEach((key) => {
+  Object.keys(settings).forEach((key) => {
     console.log(`${chalk.bold(key)}: '${settings[key]}'`);
   });
 };

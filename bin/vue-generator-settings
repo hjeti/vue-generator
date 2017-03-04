@@ -13,8 +13,9 @@ program
   .parse(process.argv);
 
 if (program.log) {
+  console.log();
   console.log(chalk.green('Settings:'));
-  console.log(Settings.logSettings(Settings.getSettings()));
+  Settings.logSettings(Settings.getSettings());
   process.exit(1);
 }
 
