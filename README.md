@@ -4,7 +4,7 @@ A CLI generator for Vue components, pages and store modules
 ## Install
 
 ```console
-$ npm install vue-generator -g
+$ npm install -g vue-generator
 ```
 
 ## Usage
