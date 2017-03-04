@@ -1,7 +1,8 @@
 {
 	"name": "vue-generator",
-	"version": "0.0.1",
-	"description": "A component/store/page generator for Vue",
+	"version": "0.1.0",
+	"description": "A CLI generator for Vue components, pages and store modules",
+  "preferGlobal": true,
 	"bin": {
 		"vue-generator": "bin/vue-generator",
 		"vue-generator-wizard": "bin/vue-generator-wizard",
@@ -20,8 +21,16 @@
 		"vg-store": "bin/vue-generator-store",
 		"vg-template": "bin/vue-generator-template"
 	},
-	"author": "",
-	"license": "",
+	"author": "Hendrik-Jan de Harder",
+	"license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hjeti/vue-generator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hjeti/vue-generator/issues"
+  },
+  "homepage": "https://github.com/hjeti/vue-generator#readme",
 	"dependencies": {
 		"async": "^2.1.5",
 		"chalk": "^1.1.3",
@@ -36,5 +45,8 @@
 		"to-slug-case": "^1.0.0",
 		"to-snake-case": "^1.0.0",
 		"user-settings": "^0.1.5"
-	}
+	},
+  "engines": {
+    "node": ">=6.0.0"
+  }
 }
