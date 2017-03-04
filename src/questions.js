@@ -42,7 +42,13 @@ function askName(defaultName) {
     type: 'input',
     name: 'name',
     message: 'What name do you want to use?',
-    default: defaultName || ''
+    default: defaultName || '',
+    filter(value){
+      return value.trim();
+    },
+    validate(value){
+      return value.trim().length == 0 ? 'No name given' : true;
+    }
   }
 }
 

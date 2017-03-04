@@ -24,7 +24,7 @@ module.exports = function generateDirect(type, destinationSettingsKey) {
 
 
   if (!componentName) {
-    console.error(chalk.red('no name given'));
+    console.error(chalk.red('No name given'));
     process.exit(1);
   }
 
