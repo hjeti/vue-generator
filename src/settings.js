@@ -30,11 +30,11 @@ exports.setLocalSettings = function (settings) {
   fs.writeFileSync(path.resolve(settingsFile), JSON.stringify(settings, null, 2));
 };
 
-exports.hasLocalSettings = function (settings) {
+exports.hasLocalSettings = function () {
   return fs.existsSync(path.resolve(settingsFile));
 };
 
-exports.getLocalSettings = function (settings) {
+exports.getLocalSettings = function () {
   if (this.hasLocalSettings()) {
     const fileContent = fs.readFileSync(path.resolve(settingsFile), {encoding: 'utf-8'});
 

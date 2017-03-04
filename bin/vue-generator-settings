@@ -9,13 +9,24 @@ program
   .option('-s, --store-destination <destination>', 'Set store default destination')
   .option('-c, --component-destination <destination>', 'Set component default destination')
   .option('-t, --template-path <destination>', 'Set default template directory')
-  .option('-l, --log', 'Log settings')
+  .option('-g, --global', 'Set global settings')
+  .option('-l, --log', 'Log global or local settings depending on global flag')
   .parse(process.argv);
 
 if (program.log) {
   console.log();
-  console.log(chalk.green('Settings:'));
-  Settings.logSettings(Settings.getSettings());
+
+  if(program.global)
+  {
+    console.log(chalk.green('Global settings:'));
+    Settings.logSettings(Settings.getSettings({}, true));
+  }
+  else
+  {
+    console.log(chalk.green('Local settings:'));
+    Settings.logSettings(Settings.getLocalSettings());
+  }
+
   process.exit(1);
 }
 
@@ -37,8 +48,28 @@ if (program.templatePath) {
   settings['templatePath'] = program.templatePath;
 }
 
-Settings.setGlobalSettings(settings);
+if(Object.keys(settings).length == 0)
+{
+  console.log();
+  console.log(chalk.green(`Settings:`));
+  Settings.logSettings(Settings.getSettings());
+  process.exit(1);
+}
 
-console.log();
-console.log(chalk.green('Settings updated:'));
-Settings.logSettings(Settings.getSettings());
+if(program.global){
+  Settings.setGlobalSettings(settings);
+
+  console.log();
+  console.log(chalk.green('Global settings updated:'));
+  Settings.logSettings(Settings.getSettings({}, true));
+}
+else {
+  const updatedSettings = Object.assign({}, Settings.getLocalSettings(), settings);
+  Settings.setLocalSettings(updatedSettings);
+
+  console.log();
+  console.log(chalk.green('Local settings updated:'));
+  Settings.logSettings(updatedSettings);
+}
+
+

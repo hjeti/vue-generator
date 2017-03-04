@@ -8,7 +8,6 @@ module.exports = function init() {
 
   const questions = Questions.getSettingQuestions(settings);
 
-  console.log();
   inquirer.prompt(questions).then((answers) => {
     Settings.setLocalSettings(answers);
 
