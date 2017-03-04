@@ -9,5 +9,12 @@ program
 
 Settings.resetSettings();
 
-console.log(chalk.green('Settings are reset to defaults'));
-console.log(Settings.getSettings());
+console.log();
+console.log(chalk.green('Global settings are reset to defaults.'));
+console.log();
+
+console.log(chalk.green('Global settings:'));
+
+Settings.logSettings(Settings.getSettings({}, true));
+
+

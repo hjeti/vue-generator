@@ -12,8 +12,10 @@ const defaultSettings = {
   templatePath: ''
 };
 
-exports.getSettings = function (overrides = {}) {
-  return Object.assign({}, defaultSettings, this.getUserSettings(), this.getLocalSettings(), overrides);
+exports.getSettings = function (overrides = {}, ignoreLocalSettings = false) {
+  const localSettings = ignoreLocalSettings ? {} : this.getLocalSettings();
+
+  return Object.assign({}, defaultSettings, this.getUserSettings(), localSettings, overrides);
 };
 
 exports.resetSettings = function () {
@@ -65,7 +67,7 @@ exports.getUserSettings = function () {
 
 exports.logSettings = function (settings) {
   return Object.keys(settings).forEach((key) => {
-    console.log()
+    console.log(`${chalk.bold(key)}: '${settings[key]}'`);
   });
 };
 

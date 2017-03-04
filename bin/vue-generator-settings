@@ -14,7 +14,7 @@ program
 
 if (program.log) {
   console.log(chalk.green('Settings:'));
-  console.log(Settings.getSettings());
+  console.log(Settings.logSettings(Settings.getSettings()));
   process.exit(1);
 }
 
@@ -38,5 +38,6 @@ if (program.templatePath) {
 
 Settings.setGlobalSettings(settings);
 
+console.log();
 console.log(chalk.green('Settings updated:'));
-console.log(Settings.getSettings());
+Settings.logSettings(Settings.getSettings());
