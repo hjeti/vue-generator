@@ -6,8 +6,6 @@ const fs = require('fs');
 module.exports = function questions(type, settings, name) {
   let questions;
 
-  console.log('*', name);
-
   switch (type) {
     case wizardType.WIZARD: {
       questions = [askType(), askName(name), askDestination(templateType.PAGE, settings.pageDestination, true), askDestination(templateType.STORE, settings.storeDestination, true), askDestination(templateType.COMPONENT, settings.componentDestination, true)];
@@ -40,8 +38,6 @@ function askType() {
 }
 
 function askName(defaultName) {
-  console.log('askName', defaultName);
-
   return {
     type: 'input',
     name: 'name',

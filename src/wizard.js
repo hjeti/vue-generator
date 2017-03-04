@@ -6,7 +6,6 @@ const fs = require('fs');
 const generate = require('./generate');
 
 module.exports = function wizard(type, name) {
-  console.log(name);
   let settingOverrides = {};
 
   let settings = Settings.getSettings(settingOverrides);
