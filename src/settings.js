@@ -22,6 +22,8 @@ exports.resetSettings = function () {
 
 exports.setSettings = function (settings) {
   Object.keys(settings).forEach(key => userSettings.set(key, settings[key]));
+
+  saveLocalSettings(settings);
 };
 
 function getUserSettings() {
@@ -49,7 +51,7 @@ function getLocalSettings() {
     try {
       settings = JSON.parse(fileContent);
     } catch (e) {
-      console.error(chalk.red(`Error parsing ${settingsFile} file.`));
+      console.error(chalk.red(`Error parsing local ${settingsFile} file.`));
       process.exit(1);
     }
 
@@ -59,6 +61,6 @@ function getLocalSettings() {
   return {};
 }
 
-function saveLocalSettings(overrides) {
-
+function saveLocalSettings(settings) {
+  fs.writeFileSync(path.resolve(settingsFile), JSON.stringify(settings, null, 2));
 }
