@@ -9,10 +9,11 @@ program
   .version(require('../package').version)
   .usage('<command> [options]')
   .command('wizard', 'Start generator wizard', {isDefault: true})
+  .command('init', 'Create local .vuegenerator file with settings')
   .command('component', 'Create component')
   .command('store', 'Create store module')
   .command('page', 'Create page')
-  .command('reset', 'Reset settings')
+  .command('reset', 'Reset global settings')
   .command('settings', 'Set or display settings')
   .command('template', 'Open default template directory to edit default templates')
   .parse(process.argv);
