@@ -33,6 +33,10 @@ exports.getSettingQuestions = function (settings) {
   return Object.keys(settings).map(key => askSetting(key, settings[key]));
 };
 
+exports.getCopyQuestions = function (destination) {
+  return [askCopyDestination(destination)];
+};
+
 function askSetting(key, defaultValue) {
   return {
     type: 'input',
@@ -63,6 +67,15 @@ function askName(defaultName) {
     validate(value){
       return value.trim().length == 0 ? 'No name given' : true;
     }
+  }
+}
+
+function askCopyDestination(defaultDestination) {
+  return {
+    type: 'input',
+    name: 'destination',
+    message: 'destination',
+    default: defaultDestination || '.'
   }
 }
 

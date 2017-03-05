@@ -15,5 +15,6 @@ program
   .command('view', 'Create view')
   .command('reset', 'Reset global settings')
   .command('settings', 'Set or display settings')
-  .command('template', 'Open default template directory to edit default templates')
+  .command('show-templates', 'Open default template directory to show or edit default templates')
+  .command('copy-templates', 'Copy default templates to desired location')
   .parse(process.argv);
