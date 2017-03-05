@@ -3,4 +3,4 @@
 const generateDirect = require('../src/generateDirect');
 const TemplateType = require('../src/templateType');
 
-generateDirect(TemplateType.PAGE, 'pageDestination');
+generateDirect(TemplateType.VIEW, 'viewDestination');

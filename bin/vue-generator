@@ -12,7 +12,7 @@ program
   .command('init', 'Create local .vuegenerator file with settings')
   .command('component', 'Create component')
   .command('store', 'Create store module')
-  .command('page', 'Create page')
+  .command('view', 'Create view')
   .command('reset', 'Reset global settings')
   .command('settings', 'Set or display settings')
   .command('template', 'Open default template directory to edit default templates')

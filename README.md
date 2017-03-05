@@ -1,5 +1,5 @@
 # vue-generator
-A CLI generator for Vue components, pages and store modules
+A CLI generator for Vue components, views and store modules
 
 ## Install
 

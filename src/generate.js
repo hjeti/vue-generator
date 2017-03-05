@@ -15,7 +15,7 @@ module.exports = function generate(type, options, settings) {
 
   if (!pathExists(settings.templatePath)) {
     console.log();
-    console.error(chalk.red(`Template folder (${settings.templatePath}) doesn't exist`));
+    console.error(chalk.red(`Template folder (${path.resolve(settings.templatePath)}) doesn't exist`));
     return;
   }
 
@@ -23,7 +23,7 @@ module.exports = function generate(type, options, settings) {
 
   if (!pathExists(fullTemplatePath)) {
     console.log();
-    console.log(chalk.red(`'${options.type}' template folder doesn't exist in ${settings.templatePath}`));
+    console.log(chalk.red(`'${options.type}' template folder doesn't exist in ${path.resolve(settings.templatePath)}`));
     return;
   }
 
@@ -62,8 +62,8 @@ function pathExists(value) {
 }
 
 function renderPaths(files, metalsmith, done) {
-  var keys = Object.keys(files);
-  var metadata = metalsmith.metadata();
+  const keys = Object.keys(files);
+  const metadata = metalsmith.metadata();
 
   keys.forEach((key) => {
     let newKey = replaceVars(key, metadata);
@@ -78,13 +78,13 @@ function renderPaths(files, metalsmith, done) {
 }
 
 function renderTemplates(files, metalsmith, done) {
-  var keys = Object.keys(files);
-  var metadata = metalsmith.metadata();
+  const keys = Object.keys(files);
+  const metadata = metalsmith.metadata();
 
   async.each(keys, run, done);
 
   function run(file, done) {
-    var str = files[file].contents.toString();
+    let str = files[file].contents.toString();
     render(str, metadata, function (err, res) {
       if (err) {
         return done(err);
@@ -97,9 +97,9 @@ function renderTemplates(files, metalsmith, done) {
 
 function replaceVars(value, object) {
   return value.replace(/\$?\{([@#$%&\w\.]*)(\((.*?)\))?\}/gi, (match, name) => {
-    var props = name.split(".");
-    var prop = props.shift();
-    var o = object;
+    const props = name.split(".");
+    const prop = props.shift();
+    let o = object;
 
     if (o != null && prop in o) {
       return o[prop];
