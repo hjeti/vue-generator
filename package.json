@@ -1,6 +1,6 @@
 {
   "name": "vue-generator",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A CLI generator for Vue components, pages and store modules",
   "preferGlobal": true,
   "bin": {
