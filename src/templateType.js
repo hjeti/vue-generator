@@ -1,5 +1,5 @@
 module.exports = {
-  PAGE: 'page',
+  VIEW: 'view',
   STORE: 'store',
   COMPONENT: 'component'
 };

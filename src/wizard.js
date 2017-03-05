@@ -1,8 +1,6 @@
 const Settings = require('./settings');
 const Questions = require('./questions');
 const inquirer = require('inquirer');
-const path = require('path');
-const fs = require('fs');
 const generate = require('./generate');
 
 module.exports = function wizard(type, name) {

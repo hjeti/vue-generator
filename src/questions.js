@@ -9,7 +9,7 @@ exports.getGeneratorQuestions = function (type, settings, name) {
 
   switch (type) {
     case wizardType.WIZARD: {
-      questions = [askType(), askName(name), askDestination(templateType.PAGE, settings.pageDestination, true), askDestination(templateType.STORE, settings.storeDestination, true), askDestination(templateType.COMPONENT, settings.componentDestination, true)];
+      questions = [askType(), askName(name), askDestination(templateType.VIEW, settings.viewDestination, true), askDestination(templateType.STORE, settings.storeDestination, true), askDestination(templateType.COMPONENT, settings.componentDestination, true)];
       break;
     }
     case wizardType.STORE: {
@@ -20,8 +20,8 @@ exports.getGeneratorQuestions = function (type, settings, name) {
       questions = [askName(name), askDestination(templateType.COMPONENT, settings.componentDestination)];
       break;
     }
-    case wizardType.PAGE: {
-      questions = [askName(name), askDestination(templateType.PAGE, settings.pageDestination)];
+    case wizardType.VIEW: {
+      questions = [askName(name), askDestination(templateType.VIEW, settings.viewDestination)];
       break;
     }
   }

@@ -6,7 +6,7 @@ const path = require('path');
 const chalk = require('chalk');
 
 const defaultSettings = {
-  pageDestination: './src/page/',
+  viewDestination: './src/view/',
   storeDestination: './src/store/module/',
   componentDestination: './src/component/',
   templatePath: ''

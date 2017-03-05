@@ -4,9 +4,3 @@ const generateDirect = require('../src/generateDirect');
 const TemplateType = require('../src/templateType');
 
 generateDirect(TemplateType.STORE, 'storeDestination');
-
-
-
-
-
-
