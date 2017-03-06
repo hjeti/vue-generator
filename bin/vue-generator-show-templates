@@ -2,6 +2,7 @@
 
 const open = require('open');
 const path = require('path');
+const program = require('commander');
 
 program
   .parse(process.argv);
