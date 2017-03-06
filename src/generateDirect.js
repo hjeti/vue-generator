@@ -16,10 +16,10 @@ module.exports = function generateDirect(type, destinationSettingsKey) {
     .action((name) => {
       componentName = name;
     })
-    .option('-d, --destination <destination>', 'Destination')
-    .option('-p, --template-path <template-path>', 'Path to the directory containing the templates')
+    .option('-d, --destination <destination>', 'Override destination')
+    .option('-p, --template-path <template-path>', 'Override template path')
     .option('-t, --template <template>', 'Override template type')
-    .option('-f, --force', 'Force generation')
+    .option('-f, --force', 'Force creation of a component')
     .parse(process.argv);
 
 

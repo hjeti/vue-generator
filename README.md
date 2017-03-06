@@ -73,13 +73,69 @@ Options:
 * ```-d, --destination <destination>```: Override the destination for component.
 * ```-p, --template-path <template-path>```: Override template path.
 * ```-t, --template <template>```: Override template type. By default it uses the 'component' folder from the template path. With this option you can use a different template folder.
+* ```-f, --force```: Force creation of a component. By default it's impossible to create a component if the destination path doesn't exist. This option forces the creation of a component and will generates the destination folders if they don't exist. 
 
 Examples:
 ```console
 $ vg component check-box
 $ vg component RadioButton -d ./components/ui 
-$ vg component videoPlayer -d ./src/components/players/ -t base-video-component
+$ vg component videoPlayer -d ./src/components/players/ -t base-video-component -f
 ```
+
+#### view
+
+Directly create a view based on the current settings.
+
+```console
+$ vg view <name>
+```
+
+Arguments:
+
+* ```name```: The name you want to use for the view.
+
+Options:
+
+* ```-d, --destination <destination>```: Override the destination for view.
+* ```-p, --template-path <template-path>```: Override template path.
+* ```-t, --template <template>```: Override template type. By default it uses the 'view' folder from the template path. With this option you can use a different template folder.
+* ```-f, --force```: Force creation of a view. By default it's impossible to create a component if the destination path doesn't exist. This option forces the creation of a component and will generates the destination folders if they don't exist. 
+
+Examples:
+```console
+$ vg view home
+$ vg view Contact -d ./components/view 
+$ vg view video-detail -p ./custom-templates -t detail-view
+```
+
+#### store
+
+Directly create a store module based on the current settings.
+
+```console
+$ vg store <name>
+```
+
+Arguments:
+
+* ```name```: The name you want to use for the store module.
+
+Options:
+
+* ```-d, --destination <destination>```: Override the destination for store module.
+* ```-p, --template-path <template-path>```: Override template path.
+* ```-t, --template <template>```: Override template type. By default it uses the 'store' folder from the template path. With this option you can use a different template folder.
+* ```-f, --force```: Force creation of a store. By default it's impossible to create a component if the destination path doesn't exist. This option forces the creation of a component and will generates the destination folders if they don't exist. 
+
+Examples:
+```console
+$ vg store user
+$ vg store shopping-cart -d ./modules 
+$ vg store Car -t complex-store
+```
+
+
+
 
 ## Templates
 

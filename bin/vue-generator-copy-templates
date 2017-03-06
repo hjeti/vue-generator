@@ -1,0 +1,26 @@
+#!/usr/bin/env node
+
+const open = require('open');
+const path = require('path');
+const chalk = require('chalk');
+const program = require('commander');
+const inquirer = require('inquirer');
+const Settings = require('../src/settings');
+const Questions = require('../src/questions');
+const copy = require('../src/copy');
+
+program
+  .parse(process.argv);
+
+let settings = Settings.getSettings({});
+
+let questions = Questions.getCopyQuestions(settings.templatePath);
+
+inquirer.prompt(questions).then((answers) => {
+  const destination = path.resolve(answers.destination);
+
+  copy(path.join(__dirname, '../template'), destination);
+
+  console.log();
+  console.log(chalk.green(`Default templates successfully copied to: ${destination}`));
+});
