@@ -30,7 +30,7 @@ The default templates can be customized to fit your needs. Run ```vg show-templa
 
 It's also possible to create custom templates in another directory. 
 The best way to start is by copying the default templates ```vg copy-templates``` and edit them. 
-Don't forget to run ```$ vg init``` or set the template path with ```vg settings``` to use your custom templates with vue-generator
+Don't forget to run ```vg init``` or set the template path with ```vg settings``` to use your custom templates with vue-generator
 
 There are 3 template types:
 
