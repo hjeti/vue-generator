@@ -24,13 +24,13 @@ There are two ways to customize templates:
 
 **edit default templates**
 
-The default templates can be customized to fit your needs. Run ```$ vg show-templates``` to open the default template directory.
+The default templates can be customized to fit your needs. Run ```vg show-templates``` to open the default template directory.
 
 **create custom templates**
 
 It's also possible to create custom templates in another directory. 
-The best way to start is by copying the default templates ```$ vg copy-templates``` and edit them. 
-Don't forget to run ```$ vg init``` or set the template path with ```$ vg settings``` to use your custom templates with vue-generator
+The best way to start is by copying the default templates ```vg copy-templates``` and edit them. 
+Don't forget to run ```$ vg init``` or set the template path with ```vg settings``` to use your custom templates with vue-generator
 
 There are 3 template types:
 
@@ -44,7 +44,7 @@ A template path should at least contain 3 folders with the names that match the 
 
 It's also possible to add other custom template folders. If you created a custom template folder and want to use it 
 when creating a view, store or component you have to set the ```-t, -template <template>``` option of the following commands
-```$ vg component```, ```$ vg view``` and ```$ vg store```
+```vg component```, ```vg view``` and ```vg store```
 
 #### Template folder structure
 
@@ -77,7 +77,7 @@ An option will always override a local setting etc.
 
 The four layers combined determine the settings used in every command.
 
-You can see the settings of a directory by running ```$ vg settings```. 
+You can see the settings of a directory by running ```vg settings```. 
 This is without the option overrides of course.
 
 ## Commands
@@ -92,7 +92,7 @@ $ vg -h
 
 #### wizard
 
-Starts a wizard to create a component, view or store. 
+Starts a wizard to create a component, view or store module. 
 
 ```console
 $ vg wizard [type] [name]
@@ -199,8 +199,8 @@ $ vg store Car -t complex-store
 
 #### settings
 
-Set or display settings. Without any options it will show the settings. By default it will set the settings locally in a .vuegenerator file.
-You can also set global settings by using the global option.
+Set or display settings. Without any options it will display the settings. By default it will set the settings locally in a .vuegenerator file.
+You can also set global settings by using the global option ```-g --global```.
 
 ```console
 $ vg settings
@@ -241,7 +241,7 @@ $ vg show-templates
 #### copy-templates
 
 Copy the default templates to another directory. This is handy when you want to customize the default templates. 
-Don't forget to run ```$ vg init``` or set the template path with ```$ vg settings```
+Don't forget to run ```vg init``` or set the template path with ```vg settings```.
 
 ```console
 $ vg copy-templates
