@@ -1,6 +1,8 @@
 # vue-generator
 A CLI generator for Vue components, views and store modules
 
+Supports Vue 2.x
+
 ## Install
 
 ```console
