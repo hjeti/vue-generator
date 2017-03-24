@@ -43,6 +43,7 @@
     "fs-extra": "^2.0.0",
     "handlebars": "^4.0.6",
     "inquirer": "^3.0.5",
+    "istextorbinary": "^2.1.0",
     "metalsmith": "^2.3.0",
     "open": "0.0.5",
     "to-camel-case": "^1.0.0",

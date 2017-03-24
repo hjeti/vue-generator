@@ -7,6 +7,7 @@ const render = require('consolidate').handlebars.render;
 const toSlugCase = require('to-slug-case');
 const toCamelCase = require('to-camel-case');
 const toPascalCase = require('to-pascal-case');
+const isTextOrBinary = require('istextorbinary');
 
 module.exports = function generate(type, options, settings) {
   if (settings.templatePath == '') {
@@ -84,6 +85,11 @@ function renderTemplates(files, metalsmith, done) {
   async.each(keys, run, done);
 
   function run(file, done) {
+    if(isTextOrBinary.isBinarySync(path.basename(file), files[file].contents)) {
+      done();
+      return;
+    }
+
     let str = files[file].contents.toString();
     render(str, metadata, function (err, res) {
       if (err) {
