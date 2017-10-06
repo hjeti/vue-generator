@@ -32,7 +32,7 @@ module.exports = function generate(type, options, settings) {
   console.log(chalk.green(chalk.bold(`Generating files from '${type}' template with name: ${options.name}`)));
 
   metalsmith(fullTemplatePath)
-    .metadata(Object.assign({}, getNames(options.name)))
+    .metadata(Object.assign({}, getNames(options.name), { filename: getFilename(options.name) }))
     .source('.')
     .destination(path.resolve(options.destination))
     .clean(false)
@@ -48,6 +48,12 @@ module.exports = function generate(type, options, settings) {
       }
     });
 };
+
+function getFilename(name) {
+  const fileNameSplit = name.split('/');
+  if (fileNameSplit.length === 0) return;
+  return fileNameSplit[fileNameSplit.length - 1];
+}
 
 function getNames(name) {
   return {
