@@ -51,7 +51,9 @@ module.exports = function generate(type, options, settings) {
 
 function getFilename(name) {
   const fileNameSplit = name.split('/');
-  if (fileNameSplit.length === 0) return;
+  if (fileNameSplit.length === 0) {
+    return name;
+  }
   return fileNameSplit[fileNameSplit.length - 1];
 }
 
