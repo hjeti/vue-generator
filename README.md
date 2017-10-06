@@ -63,6 +63,7 @@ Inside files you can use the handlebar syntax ```{{variable}}```.
 * ```name_pc```: Name converted to PascalCase
 * ```name_sc```: Name converted to slug-case
 * ```name_cc```: Name converted to CamelCase
+* ```filename```: Filename - different from `name` as it takes into account any '/' included in the arguments.
 
 See default templates for examples.
 
