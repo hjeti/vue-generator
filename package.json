@@ -45,7 +45,7 @@
     "inquirer": "^3.0.5",
     "istextorbinary": "^2.1.0",
     "metalsmith": "^2.3.0",
-    "open": "0.0.5",
+    "open": "^6.1.0",
     "to-camel-case": "^1.0.0",
     "to-pascal-case": "^1.0.0",
     "to-slug-case": "^1.0.0",
