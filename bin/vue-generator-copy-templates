@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-const open = require('open');
 const path = require('path');
 const chalk = require('chalk');
 const program = require('commander');
